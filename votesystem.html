@@ -4,6 +4,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Voting System</title>
+    <!-- <script type="module" src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 </head>
   
 <body style="text-align: center;">
@@ -30,9 +33,15 @@
         Button C Clicked <span id="disp2">0</span> Times<br>
         
     </p>
+
+    <div id="log">
+
+    </div>
   
     <script>
-        
+        // const axios = require('axios').default;
+        // import axios from 'axios';
+
         var count = 0;
         var count1 = 0;
         var count2 = 0;
@@ -96,6 +105,30 @@
             disp2.innerHTML = count2;
             x();
         }
+
+
+        let log = document.getElementById('log');
+        let p = document.createElement('p');       
+        function watch(url) {
+        axios({
+            method: "get",
+            url: url,
+            Accept: "text/json",
+            responseType: 'stream'
+        }).then((response) => {
+            p.innerHTML+=url+" : "+response.status+"<br>";
+            log.appendChild(p);
+            console.log(response.status);
+        }).catch((err) => {
+            console.log(err);
+        });
+    }
+    
+        watch("https://httpbin.org/status/200");
+        watch("https://google.com");
+        watch("https://anishkm.com");
+
+
     </script>
     
     
