@@ -1,0 +1,58 @@
+ <!DOCTYPE html>
+ <html>
+
+ <head>
+     <meta charset='utf-8'>
+     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+     <title>web moniter</title>
+     <meta name='viewport' content='width=device-width, initial-scale=1'>
+     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+     <script src='main.js'></script>
+     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+ </head>
+
+ <body style="text-align: center;">
+
+     <div id="log">
+
+     </div>
+     <script>
+         let log = document.getElementById('log');
+         let p = document.createElement('p');
+
+         function watch(url) {
+             axios({
+                 method: "get",
+                 url: url,
+                 Accept: "text/json",
+                 responseType: 'stream'
+             }).then((response) => {
+                 p.innerHTML += url + " : " + response.status + " (" + response.statusText + ")" + "<br>";
+                 log.appendChild(p);
+                 console.log(response.status);
+             }).catch((err) => {
+                 p.innerHTML += url + " : " + err.response.status + " (" + err.response.statusText + ")" + "<br>";
+                 log.appendChild(p);
+                 console.log(err);
+             });
+         }
+
+         //  log.innerHTML = "";
+         //  log.remove();
+
+         watch("https://httpbin.org/status/200");
+         watch("https://httpbin.org/status/401");
+         watch("https://google.com");
+         watch("https://anishkm.com");
+         watch("https://sicitechnologies.com")
+
+         setInterval(function() {
+             window.location.reload();
+         }, 10 * 1000);
+     </script>
+
+ </body>
+
+ </html>
