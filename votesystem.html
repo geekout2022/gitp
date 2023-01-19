@@ -43,8 +43,6 @@
         var btn2 = document.getElementById("btn2");
         var disp2 = document.getElementById("disp2");
         
-        //var reset1 = document.getElementById('reset1').innerHTML=reset();
-
         reset1.onclick = function() {
             count=0;
             count1=0;
@@ -63,22 +61,18 @@
                 if(count>count1 && count>count2)
                 {
                     alert("A Wins!");
-                    //btn.onclick=false;
                 }
                 else if(count1>count && count1>count2)
                 {
                     alert("B Wins!");
-                    //btn1.onclick=false;
                 }
                 else if(count==count1 || count==count2)
                 {
                     alert("Tie");
-                   // btn2.onclick=false;
                 }
                 else if(count==count1 || count==count2)
                 {
                     alert("Tie");
-                   // btn2.onclick=false;
                 }
                 
             }
@@ -90,75 +84,17 @@
         btn.onclick = function () {
             count++;
             disp.innerHTML = count;
-            x();
-            
-            /*if(count==10)
-            {
-                alert('A Wins!!');
-                btn.onclick=false;
-                btn1.onclick=false
-                btn2.onclick=false
-                reset1();
-            }
-            else if(x==10)
-            {
-                if(count>count1 && count>count2)
-                {
-                alert('A Wins!!')
-                btn.onclick=false;
-                btn1.onclick=false
-                btn2.onclick=false
-                reset1();
-                }
-            }*/
+            x();                    
         }
         btn1.onclick = function () {
             count1++;
             disp1.innerHTML = count1;
             x();
-           /* if(count1==10)
-            {
-                alert('B Wins!!');
-                btn.onclick=false;
-                btn1.onclick=false
-                btn2.onclick=false
-                reset1();                
-            }
-            else if(x==10)
-            {
-                if(count1>count && count1>count2)
-                {
-                alert('B Wins!!')
-                btn.onclick=false;
-                btn1.onclick=false
-                btn2.onclick=false
-                reset1();
-                }
-            }*/
         }
         btn2.onclick = function () {
             count2++;
             disp2.innerHTML = count2;
             x();
-            /*if(count2==10)
-            {
-                alert('C Wins!!');
-                btn.onclick=false;
-                btn1.onclick=false
-                btn2.onclick=false
-                reset1();
-            }
-            else if(x==10)
-            {
-                if(count2>count && count2>count1)
-                {
-                alert('C Wins!!')
-                btn.onclick=false;
-                btn1.onclick=false
-                btn2.onclick=false
-                reset1();
-                }
-            }*/
         }
     </script>
     
